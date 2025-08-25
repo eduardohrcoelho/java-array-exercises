@@ -60,9 +60,9 @@ public class Program {
         }
 
         System.out.println("Report: ");
-        for(int i = 0; i < merchant.length; i++){
-            double profit = merchant[i].getTotalProfit();
-            double getTotalPurchase = merchant[i].getTotalPurchase();
+        for(Merchant m : merchant){
+            double profit = m.getTotalProfit();
+            double getTotalPurchase = m.getTotalPurchase();
             double profitPercentage = (profit/getTotalPurchase) * 100;
 
             if(profitPercentage < 10){
