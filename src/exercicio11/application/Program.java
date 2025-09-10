@@ -49,10 +49,10 @@ public class Program {
     static void matrizExplosao(int [][] mat, int n){
         
         System.out.println("Matriz após explosão: ");
-        if((n + 1) % 2 == 0){
+        if(n%2 != 0){
             for(int i = 0; i < mat.length; i++){
                 for(int j = 0; j < mat.length; j++){
-                    if(i == (n-1)/2 && j == (n -1)/2){
+                    if(i == (n-1)/2 && j == (n-1)/2){
                         mat[i][j] = 0;
                         mat[i - 1][j] = 0;
                         mat[i + 1][j] = 0;
