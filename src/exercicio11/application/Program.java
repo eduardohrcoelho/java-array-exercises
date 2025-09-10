@@ -28,9 +28,16 @@ public class Program {
                 soma += mat[i][j];
             }
         }
+
+        for(int i = 0; i < mat.length; i++){
+            for(int j = 0; j < mat[i].length; j++){
+                System.out.print(mat[i][j] + " ");
+            }
+            System.out.println();
+        }
         
         media = soma/(mat.length * mat.length);
-        System.out.printf("Média geral: %.2f",media);
+        System.out.printf("\nMédia geral: %.2f",media);
         System.out.println();
         matrizBinaria(mat, media, n);
         System.out.println();
@@ -89,7 +96,7 @@ public class Program {
         for(int i = 0; i < mat.length; i++){
             for(int j = 0; j < mat[i].length; j++){
                 mat2[i][j] = mat[i][j];
-                if(mat[i][j] > media){
+                if(mat2[i][j] > media){
                     mat2[i][j] = 1;
                 }else{
                     mat2[i][j] = 0;
