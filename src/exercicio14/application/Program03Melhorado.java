@@ -6,52 +6,58 @@ public class Program03Melhorado {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String[] lista;
+        String [] lista;
         int cont = 0;
 
         lista = preencherLista(scanner);
-        for (int i = 0; i < lista.length; i++) {
-            if (lista[i] != null) {
+        for(int i = 0; i < lista.length; i++){
+            if(lista[i] != null){
                 cont++;
             }
         }
         scanner.nextLine();
         System.out.println("Insira um convidado: ");
-        String elemento = scanner.nextLine();
-        lista = insere(lista, elemento, cont);
+        String convidado = lerConvidado(scanner);
+        lista = insere(lista, convidado, cont);
         imprimirLista(lista);
-        System.out.println("Informe o nome");
-        String convidado = scanner.nextLine();
-        if (pesquisar(lista, convidado)) {
+        System.out.println("--- Pesquisa ---");
+        convidado = lerConvidado(scanner);
+        if(pesquisar(lista, convidado)){
             System.out.println(convidado + " está na lista");
-        } else {
+        }else{
             System.out.println(convidado + " não está na lista");
         }
-        System.out.println("Informe o nome p remover: ");
-        convidado = scanner.nextLine();
+        System.out.println("--- Remover ---");
+        convidado = lerConvidado(scanner);
         lista = remover(lista, convidado);
         System.out.println("--- Lista atualizada ---");
         imprimirLista(lista);
         scanner.close();
     }
 
-    static String[] insere(String lista[], String elemento, int ultimo) {
+    static String lerConvidado(Scanner scanner){
+        System.out.println("Informe o nome do convidado: ");
+        String convidado = scanner.nextLine();
+        return convidado;
+    }
+
+    static String [] insere(String lista [], String elemento, int ultimo){
         lista[ultimo] = elemento;
         return lista;
     }
 
-    static void imprimirLista(String lista[]) {
+    static void imprimirLista(String lista []){
         System.out.println("--- Lista de Convidados ---");
-        for (int i = 0; i < lista.length; i++) {
-            if (lista[i] != null) {
+        for(int i = 0; i < lista.length; i++){
+            if(lista[i] != null){
                 System.out.println((i + 1) + " - " + lista[i]);
             }
         }
     }
 
-    static String[] aumentaLista(String lista[]) {
-        String[] listaMaior = new String[lista.length * 2];
-        for (int i = 0; i < lista.length; i++) {
+    static String [] aumentaLista(String lista[]){
+        String [] listaMaior = new String[lista.length*2];
+        for(int i = 0; i < lista.length; i++){
             listaMaior[i] = lista[i];
         }
         lista = listaMaior;
@@ -78,9 +84,9 @@ public class Program03Melhorado {
         return nomes;
     }
 
-    static boolean pesquisar(String[] lista, String convidado) {
-        for (int i = 0; i < lista.length; i++) {
-            if (lista[i].equalsIgnoreCase(convidado)) {
+    static boolean pesquisar(String [] lista, String convidado){
+        for(int i = 0; i < lista.length; i++){
+            if(lista[i].equalsIgnoreCase(convidado)){
                 return true;
             }
         }
@@ -100,7 +106,7 @@ public class Program03Melhorado {
             String[] novoVetor = new String[lista.length - 1];
             for (int i = 0, k = 0; i < lista.length; i++) {
                 if (i != indice) {
-                    if (k < novoVetor.length) {
+                    if(k < novoVetor.length) {
                         novoVetor[k++] = lista[i];
                     }
                 }
